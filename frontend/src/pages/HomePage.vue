@@ -163,10 +163,10 @@ let worstTeammatesChart: echarts.ECharts | null = null
 
 // 获取API基础URL（生产环境使用环境变量，开发环境使用代理）
 const getApiBaseUrl = () => {
-  // 生产环境：使用环境变量或直接使用完整URL
+  // 生产环境：直接使用后端地址
   if (import.meta.env.PROD) {
-    const apiUrl = import.meta.env.VITE_API_BASE_URL || ''
-    return apiUrl ? `$192.168.1.6:8001/api` : '/api'
+    // NAS部署时使用后端地址（使用域名，不是IP）
+    return 'http://yumingxunas.top:8001/api'
   }
   // 开发环境：使用代理
   return '/api'
