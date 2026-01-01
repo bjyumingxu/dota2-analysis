@@ -1,0 +1,34 @@
+# Fly.io配置文件
+# 运行 flyctl launch 后会自动生成，这里提供模板
+
+app = "dota2-analysis-api"  # 你的应用名称
+primary_region = "sin"  # 你选择的区域
+
+[build]
+
+[env]
+  OPENDOTA_API_BASE_URL = "https://api.opendota.com/api"
+  CORS_ORIGINS = "*"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8000
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+

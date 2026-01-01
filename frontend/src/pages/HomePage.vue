@@ -166,7 +166,7 @@ const getApiBaseUrl = () => {
   // 生产环境：使用环境变量或直接使用完整URL
   if (import.meta.env.PROD) {
     const apiUrl = import.meta.env.VITE_API_BASE_URL || ''
-    return apiUrl ? `${apiUrl}/api` : '/api'
+    return apiUrl ? `$192.168.1.6:8001/api` : '/api'
   }
   // 开发环境：使用代理
   return '/api'

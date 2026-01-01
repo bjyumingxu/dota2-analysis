@@ -1,0 +1,65 @@
+# Git相关
+.git
+.gitignore
+.gitattributes
+
+# IDE和编辑器
+.cursor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Python相关
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# 测试和覆盖率
+.pytest_cache
+.coverage
+htmlcov/
+.tox/
+
+# 文档和说明
+*.md
+!README.md
+docs/
+
+# 前端相关（后端不需要）
+frontend/
+node_modules/
+
+# 部署配置（不需要在镜像中）
+fly.toml
+railway.json
+vercel.json
+.dockerignore
+Dockerfile
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# 其他
+*.bat
+*.sh
+

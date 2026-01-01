@@ -1,0 +1,28 @@
+# 使用Python 3.11
+FROM python:3.11-slim
+
+# 设置工作目录
+WORKDIR /app
+
+# 配置pip使用国内镜像源（阿里云，加快下载速度）
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && \
+    pip config set install.trusted-host mirrors.aliyun.com
+
+# 复制requirements文件
+COPY backend/requirements.txt .
+
+# 安装依赖
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 复制后端代码
+COPY backend/ ./backend/
+
+# 设置环境变量
+ENV PYTHONPATH=/app
+
+# 暴露端口
+EXPOSE 8000
+
+# 启动命令
+CMD ["uvicorn", "backend.src.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+
